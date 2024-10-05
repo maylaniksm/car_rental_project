@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Car Rental App',
-
+  
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        
+
       ),
       initialRoute: '/', // Set the initial route to the WelcomeView
       getPages: [
