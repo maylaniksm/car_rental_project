@@ -1,0 +1,65 @@
+name: car_rental
+description: "A Flutter project for a Car Rental App."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  get: ^4.6.6
+  image_picker: ^0.8.6 # Add the image picker dependency
+  permission_handler: ^11.2.0
+  geolocator: ^9.0.0  # versi terbaru dari geolocator
+  google_maps_flutter: ^2.1.0
+  geocoding: ^2.0.0
+  url_launcher: ^6.0.0
+  flutter_rating_bar: ^4.0.1
+  intl: ^0.17.0
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/welcome.png
+    - assets/images/rav.png
+    - assets/images/profil.png
+    - assets/images/porsche.png
+    - assets/images/mercedes.png
+    - assets/images/maserati.png
+    - assets/images/iris.png
+    - assets/images/ddd.png
+    - assets/images/bmw.png
+    - assets/images/fb.png
+    - assets/images/google.png
+    - assets/images/apple.png
+    - assets/images/home.png
+    - assets/images/calendar.png
+    - assets/images/search.png
+    - assets/images/ikonprofil.png
+    - assets/images/edit.png
+    - assets/images/renault.png
+    - assets/images/honda.png
+    - assets/images/location.png
+    - assets/images/audi.png
+    - assets/images/filter.png
+    - assets/images/hyundai.png
+    - assets/images/vektor.png
+    - assets/images/danger.png
+    - assets/images/swap.png
+    - assets/images/ac.png
+    - assets/images/pintu.png
+    - assets/images/manual.png
+    - assets/images/star.png
+    - assets/images/kecepatan.png
+    - assets/images/duduk.png
+    - assets/images/bensin.png
