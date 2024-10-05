@@ -1,3 +1,4 @@
+import 'package:car_rental/app/modules/details/controllers/details_controller.dart';
 import 'package:car_rental/app/modules/details/views/details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -358,13 +359,13 @@ class _HomeViewState extends State<HomeView> {
   Widget _buildRecommendedCard(String imagePath, String brand, int price) {
   return GestureDetector(
     onTap: () {
-       Get.to(DetailsView(), arguments: {
-  'brand': 'Toyota',
-  'image': 'assets/toyota.png',
-  'price': 100,
-});
-
-    },
+      Get.lazyPut(() => DetailsController());
+      Get.to(DetailsView(), arguments: {
+      'brand': 'Toyota',
+      'image': 'assets/toyota.png',
+      'price': 100,
+    });
+  },
    
  
       child: Card(

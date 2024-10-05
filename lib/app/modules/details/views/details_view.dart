@@ -1,3 +1,4 @@
+import 'package:car_rental/app/modules/detail_payment/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -144,7 +145,9 @@ class DetailsView extends GetView<DetailsController> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(DetailPaymentScreen());
+                      },
                       child: Text('Rent Now'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF353392),

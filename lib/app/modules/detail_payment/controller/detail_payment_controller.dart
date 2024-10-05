@@ -2,7 +2,7 @@ import 'package:car_rental/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DetailsController extends GetxController {
+class DetailPaymentcontroller extends GetxController {
   var brand = ''.obs; // Add observable variables
   var price = 0.obs; 
   var imagePath = ''.obs;
@@ -11,14 +11,11 @@ class DetailsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Example data initialization
-    brand.value = 'Car Brand';
-    price.value = 100; // Example price
-    imagePath.value = 'assets/images/ddd.png'; // Example image path
+    
   }
 }
 
 void main() {
-  Get.put(DetailsController()); // Register the DetailsController here
+  Get.put(DetailPaymentcontroller()); // Register the DetailsController here
   runApp(MyApp());
 }

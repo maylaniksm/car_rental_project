@@ -1,3 +1,4 @@
+import 'package:car_rental/app/modules/detail_payment/screen.dart';
 import 'package:get/get.dart';
 import '../modules/welcome/controllers/welcome_controller.dart';
 import '../modules/home/views/home_view.dart';
@@ -53,6 +54,16 @@ class AppPages {
     GetPage(
       name: Routes.DETAILS,
       page: () => DetailsView(),
+      binding: DetailsBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAILS,
+      page: () => DetailsView(),
+      binding: DetailsBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAILPAYMENT,
+      page: () => DetailPaymentScreen(),
       binding: DetailsBinding(),
     ),
   ];
