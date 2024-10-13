@@ -1,5 +1,6 @@
 import 'package:car_rental/app/modules/details/controllers/details_controller.dart';
 import 'package:car_rental/app/modules/details/views/details_view.dart';
+import 'package:car_rental/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // Adjust the path as necessary
@@ -32,12 +33,15 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
+    Get.put(HomeController());
     filteredVehicles = vehicles;
     filteredBrands = brands;
     filteredRecommended = recommended;
+
   }
 
   void _searchVehicles(String query) {
+    
     setState(() {
       searchQuery = query;
       filteredVehicles = query.isEmpty
@@ -56,6 +60,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<HomeController>();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -245,18 +250,18 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             SizedBox(height: 16),
-            GridView.count(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                _buildRecommendedCard('assets/images/ddd.png', 'Mercedes Benz', 65),
-                _buildRecommendedCard('assets/images/rav.png', 'Toyota', 25),
-                _buildRecommendedCard('assets/images/audi.png', 'Audi', 55),
-                _buildRecommendedCard('assets/images/iris.png', 'Honda', 30),
-              ],
+            Obx(() => 
+              GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                children: [
+                 ...controller.listVehicle.map((element) => _buildRecommendedCard(element.primaryPhotoUrl, "${element.make} ${element.model}", 65),)
+                  
+                ],
+              ),
             ),
           ],
         ),
@@ -359,7 +364,7 @@ class _HomeViewState extends State<HomeView> {
   Widget _buildRecommendedCard(String imagePath, String brand, int price) {
   return GestureDetector(
     onTap: () {
-      Get.lazyPut(() => DetailsController());
+      // Get.lazyPut(() => DetailsController());
       Get.to(DetailsView(), arguments: {
       'brand': 'Toyota',
       'image': 'assets/toyota.png',
@@ -377,7 +382,7 @@ class _HomeViewState extends State<HomeView> {
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-                child: Image.asset(
+                child: Image.network(
                   imagePath,
                   fit: BoxFit.cover,
                   width: double.infinity,
