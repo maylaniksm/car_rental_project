@@ -3,7 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:expansion_widget/expansion_widget.dart';
- import 'dart:math' as math;
+import 'dart:math' as math;
+
+import 'package:get/get.dart';
 
 class DetailPaymentScreen extends StatefulWidget {
   const DetailPaymentScreen({super.key});
@@ -21,7 +23,7 @@ class _DetailPaymentScreenState extends State<DetailPaymentScreen> {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 40,left: 20,right: 20),
+            padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -35,37 +37,80 @@ class _DetailPaymentScreenState extends State<DetailPaymentScreen> {
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(color: Colors.grey.shade400)
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(color: Colors.grey.shade400)),
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
                         ),
-                        child: Icon(Icons.arrow_back,color: Colors.black,),
                       ),
                     ),
                     Expanded(
-                      child: Center(child: Text("Coverage Plan",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)),
+                      child: Center(
+                          child: Text(
+                        "Coverage Plan",
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      )),
                     ),
                   ],
                 ),
-                SizedBox(height: 20,),
-                Flexible(child: ListView(
+                SizedBox(
+                  height: 20,
+                ),
+                Flexible(
+                    child: ListView(
                   shrinkWrap: true,
                   children: [
-                    Text("Choose a package fot the best value protection",style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),),
-                    SizedBox(height: 10,),
+                    Text(
+                      "Choose a package fot the best value protection",
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     tileWidget(price: "Free", title: "Basic"),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     tileWidget(title: "Medium", price: '85\$'),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     tileWidget(title: "Premium", price: "98\$"),
-                    SizedBox(height: 10,),
-                    Text("Extras",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                    SizedBox(height: 10,),
-                    ExtrasWidget(title: 'Child seat',price: '85\$',),
-                    SizedBox(height: 6,),
-                    ExtrasWidget(title: 'Additional driver',price: '20\$',),
-                    SizedBox(height: 6,),
-                    ExtrasWidget(title: 'Satellite system',price: '52\$',),
-                    SizedBox(height: 150,),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Extras",
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ExtrasWidget(
+                      title: 'Child seat',
+                      price: '85\$',
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    ExtrasWidget(
+                      title: 'Additional driver',
+                      price: '20\$',
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    ExtrasWidget(
+                      title: 'Satellite system',
+                      price: '52\$',
+                    ),
+                    SizedBox(
+                      height: 150,
+                    ),
                   ],
                 ))
               ],
@@ -86,18 +131,34 @@ class _DetailPaymentScreenState extends State<DetailPaymentScreen> {
                     children: [
                       Row(
                         children: [
-                          Text("Total", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                          Text("Total",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold)),
                           SizedBox(width: 5),
-                          Text("(3 days)", style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal)),
+                          Text("(3 days)",
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.normal)),
                         ],
                       ),
-                      Text("\$183", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,color: Color(0xFF353392)),)
+                      Text(
+                        "\$183",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF353392)),
+                      )
                     ],
                   ),
                   SizedBox(height: 10),
                   ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Proceed to Payment",style: TextStyle(color: Colors.white),),
+                    onPressed: () {
+                      // Navigasi ke halaman BookingView
+                      Get.toNamed('/booking');
+                    },
+                    child: Text(
+                      "Proceed to Payment",
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 50),
                       backgroundColor: Color(0xFF353392),
@@ -112,61 +173,73 @@ class _DetailPaymentScreenState extends State<DetailPaymentScreen> {
     );
   }
 
-  ExpansionWidget tileWidget({required String title,required String price}) {
+  ExpansionWidget tileWidget({required String title, required String price}) {
     return ExpansionWidget(
-    initiallyExpanded: true,
-    titleBuilder: (double animationValue, _, bool isExpaned, toogleFunction) {
-      return InkWell(
-          onTap: () => toogleFunction(animated: true),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color.fromARGB(255, 221, 221, 221)),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(4),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
+        initiallyExpanded: true,
+        titleBuilder:
+            (double animationValue, _, bool isExpaned, toogleFunction) {
+          return InkWell(
+              onTap: () => toogleFunction(animated: true),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      color: const Color.fromARGB(255, 221, 221, 221)),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(4),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Checkbox(
-                        activeColor: Color(0xFF2CB67D),
-                        value: _selectedPackage == 'Premium',
-                        onChanged: (bool? value) {
-                          setState(() {
-                            _selectedPackage = value! ? 'Premium' : '';
-                          });
-                        },
+                      Row(
+                        children: [
+                          Checkbox(
+                            activeColor: Color(0xFF2CB67D),
+                            value: _selectedPackage == 'Premium',
+                            onChanged: (bool? value) {
+                              setState(() {
+                                _selectedPackage = value! ? 'Premium' : '';
+                              });
+                            },
+                          ),
+                          Text(title),
+                        ],
                       ),
-                      Text(title),
+                      Spacer(),
+                      Text(price),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Transform.rotate(
+                        angle: math.pi * animationValue / 2,
+                        child: Icon(Icons.arrow_forward_ios_rounded, size: 20),
+                        alignment: Alignment.center,
+                      )
                     ],
                   ),
-                  Spacer(),
-                  Text(price),
-                  SizedBox(width: 5,),
-                  Transform.rotate(
-                    angle: math.pi * animationValue / 2,
-                    child: Icon(Icons.arrow_forward_ios_rounded, size: 20),
-                    alignment: Alignment.center,
-                  )
-                ],
+                ),
+              ));
+        },
+        content: Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: [
+              ContentTile(
+                title: "Personal Accident Coverage",
               ),
-            ),
-          ));
-    },
-    content: Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(10),
-      child: Column(
-        children: [
-          ContentTile(title: "Personal Accident Coverage",),
-          ContentTile(title: "Theft waiver",),
-          ContentTile(title: "Value Cover, Glass, lights and tyre protection",),
-          ContentTile(title: "Collision damage waiver",),
-        ],
-      ),
-    ));
+              ContentTile(
+                title: "Theft waiver",
+              ),
+              ContentTile(
+                title: "Value Cover, Glass, lights and tyre protection",
+              ),
+              ContentTile(
+                title: "Collision damage waiver",
+              ),
+            ],
+          ),
+        ));
   }
 }
 
@@ -182,21 +255,21 @@ class ExtrasWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
-        border: Border.all(color: Colors.grey.shade400)
-      ),
+          borderRadius: BorderRadius.circular(40),
+          border: Border.all(color: Colors.grey.shade400)),
       child: Row(
         children: [
           Checkbox(
             value: true,
             activeColor: Color(0xFF2CB67D),
-            onChanged: (bool? value) {
-              
-            },
+            onChanged: (bool? value) {},
           ),
           Text(title),
           Spacer(),
-          Text(price,style: TextStyle(fontWeight: FontWeight.bold),),
+          Text(
+            price,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           Spacer(),
           Row(
             children: [
@@ -209,8 +282,7 @@ class ExtrasWidget extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.add),
                 color: Colors.blue,
-                onPressed: () {
-                },
+                onPressed: () {},
               ),
             ],
           ),
@@ -219,6 +291,3 @@ class ExtrasWidget extends StatelessWidget {
     );
   }
 }
-
-
-

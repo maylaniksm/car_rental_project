@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/welcome_controller.dart';
 
 class WelcomeView extends StatefulWidget {
@@ -13,7 +14,7 @@ class _WelcomeViewState extends State<WelcomeView> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-
+    var controller = Get.put(WelcomeController());
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -28,7 +29,6 @@ class _WelcomeViewState extends State<WelcomeView> {
                 height: screenHeight * 0.6,
               ),
             ),
-
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
@@ -52,16 +52,16 @@ class _WelcomeViewState extends State<WelcomeView> {
                 ],
               ),
             ),
-
             const SizedBox(height: 40),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Get.toNamed('/register');
+                      print("Button I am new here clicked");
+                      Get.toNamed(
+                          Routes.REGISTER); // Ensure consistency with Routes
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF353392),
@@ -81,7 +81,9 @@ class _WelcomeViewState extends State<WelcomeView> {
                   const SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      Get.toNamed('/login'); // Mengarahkan ke halaman login
+                      print("Navigating to login page...");
+                      Get.toNamed(
+                          Routes.LOGIN); // Ensure consistency with Routes
                     },
                     child: const Text(
                       'I have an account',

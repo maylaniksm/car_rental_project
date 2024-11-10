@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // Adjust the path as necessary
 
-
 class HomeView extends StatefulWidget {
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -22,7 +21,13 @@ class _HomeViewState extends State<HomeView> {
     Vehicle(name: 'Maserati', imagePath: 'assets/images/maserati.png'),
   ];
 
-  final List<String> brands = ['Mercedes', 'BMW', 'Maserati', 'Porsche', 'Toyota'];
+  final List<String> brands = [
+    'Mercedes',
+    'BMW',
+    'Maserati',
+    'Porsche',
+    'Toyota'
+  ];
   final List<String> recommended = ['BMW', 'Toyota', 'Audi', 'Honda'];
 
   List<Vehicle> filteredVehicles = [];
@@ -37,24 +42,28 @@ class _HomeViewState extends State<HomeView> {
     filteredVehicles = vehicles;
     filteredBrands = brands;
     filteredRecommended = recommended;
-
   }
 
   void _searchVehicles(String query) {
-    
     setState(() {
       searchQuery = query;
       filteredVehicles = query.isEmpty
           ? vehicles
           : vehicles
-              .where((vehicle) => vehicle.name.toLowerCase().contains(query.toLowerCase()))
+              .where((vehicle) =>
+                  vehicle.name.toLowerCase().contains(query.toLowerCase()))
               .toList();
       filteredBrands = query.isEmpty
           ? brands
-          : brands.where((brand) => brand.toLowerCase().contains(query.toLowerCase())).toList();
+          : brands
+              .where(
+                  (brand) => brand.toLowerCase().contains(query.toLowerCase()))
+              .toList();
       filteredRecommended = query.isEmpty
           ? recommended
-          : recommended.where((rec) => rec.toLowerCase().contains(query.toLowerCase())).toList();
+          : recommended
+              .where((rec) => rec.toLowerCase().contains(query.toLowerCase()))
+              .toList();
     });
   }
 
@@ -102,7 +111,7 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             Text(
-              'Maylani',
+              'Garin',
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -154,11 +163,14 @@ class _HomeViewState extends State<HomeView> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Search Results for "$searchQuery":', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text('Search Results for "$searchQuery":',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   SizedBox(height: 10),
                   ...filteredVehicles.map((vehicle) {
                     return ListTile(
-                      leading: Image.asset(vehicle.imagePath, width: 40, height: 40, fit: BoxFit.cover),
+                      leading: Image.asset(vehicle.imagePath,
+                          width: 40, height: 40, fit: BoxFit.cover),
                       title: Text(vehicle.name),
                       onTap: () {
                         // Handle vehicle tap if needed
@@ -166,7 +178,9 @@ class _HomeViewState extends State<HomeView> {
                     );
                   }).toList(),
                   SizedBox(height: 20),
-                  Text('Brands:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text('Brands:',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   SizedBox(height: 10),
                   ...filteredBrands.map((brand) {
                     return ListTile(
@@ -177,7 +191,9 @@ class _HomeViewState extends State<HomeView> {
                     );
                   }).toList(),
                   SizedBox(height: 20),
-                  Text('Recommended:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text('Recommended:',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   SizedBox(height: 10),
                   ...filteredRecommended.map((rec) {
                     return ListTile(
@@ -196,7 +212,8 @@ class _HomeViewState extends State<HomeView> {
               height: 200,
               child: PageView(
                 children: [
-                  _buildPromoCard('assets/images/iris.png', 'Enjoy our Nov Deals', '30% off'),
+                  _buildPromoCard('assets/images/iris.png',
+                      'Enjoy our Nov Deals', '30% off'),
                 ],
               ),
             ),
@@ -206,14 +223,17 @@ class _HomeViewState extends State<HomeView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Our Brands', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text('Our Brands',
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 GestureDetector(
                   onTap: () {
                     // Navigate to 'See All'
                   },
                   child: Text(
                     'See All >',
-                    style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Colors.blue, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -222,7 +242,8 @@ class _HomeViewState extends State<HomeView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildBrandCard('assets/images/mercedes.png', 'Mercedes', '+32'),
+                _buildBrandCard(
+                    'assets/images/mercedes.png', 'Mercedes', '+32'),
                 _buildBrandCard('assets/images/bmw.png', 'BMW', '+12'),
                 _buildBrandCard('assets/images/maserati.png', 'Maserati', '+5'),
                 _buildBrandCard('assets/images/porsche.png', 'Porsche', '+8'),
@@ -236,30 +257,35 @@ class _HomeViewState extends State<HomeView> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Recommended', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text('Recommended',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   GestureDetector(
                     onTap: () {
                       // Navigate to 'See All'
                     },
                     child: Text(
                       'See All >',
-                      style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: Colors.blue, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
               ),
             ),
             SizedBox(height: 16),
-            Obx(() => 
-              GridView.count(
+            Obx(
+              () => GridView.count(
                 crossAxisCount: 2,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                 ...controller.listVehicle.map((element) => _buildRecommendedCard(element.primaryPhotoUrl, "${element.make} ${element.model}", 65),)
-                  
+                  ...controller.listVehicle.map(
+                    (element) => _buildRecommendedCard(element.primaryPhotoUrl,
+                        "${element.make} ${element.model}", 65),
+                  )
                 ],
               ),
             ),
@@ -330,7 +356,9 @@ class _HomeViewState extends State<HomeView> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                Text(title,
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 Text(
                   subtitle,
                   style: TextStyle(color: Colors.red),
@@ -362,17 +390,15 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget _buildRecommendedCard(String imagePath, String brand, int price) {
-  return GestureDetector(
-    onTap: () {
-      // Get.lazyPut(() => DetailsController());
-      Get.to(DetailsView(), arguments: {
-      'brand': 'Toyota',
-      'image': 'assets/toyota.png',
-      'price': 100,
-    });
-  },
-   
- 
+    return GestureDetector(
+      onTap: () {
+        Get.lazyPut(() => DetailsController());
+        Get.to(DetailsView(), arguments: {
+          'brand': 'Toyota',
+          'image': 'assets/toyota.png',
+          'price': 100,
+        });
+      },
       child: Card(
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

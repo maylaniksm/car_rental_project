@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.1
+  cloud_firestore: ^5.4.4
   cupertino_icons: ^1.0.8
   get: ^4.6.6
   image_picker: ^0.8.6 # Add the image picker dependency
@@ -23,6 +26,11 @@ dependencies:
   expansion_widget: ^0.1.0
   dio: ^5.7.0
   logger: ^2.4.0
+  webview_flutter: ^4.10.0
+  flutter_local_notifications: ^17.2.4
+  firebase_messaging: ^15.1.3
+  firebase_storage: ^12.3.4
+  file_picker: ^8.1.3
   
 dev_dependencies:
   flutter_test:
@@ -66,3 +74,8 @@ flutter:
     - assets/images/kecepatan.png
     - assets/images/duduk.png
     - assets/images/bensin.png
+    - assets/images/visa.png
+    - assets/images/paypal.png
+    - assets/images/mastercard.png
+    - assets/images/applepay.png
+    - assets/images/suc.gif
